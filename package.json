@@ -31,7 +31,7 @@
     "unist-builder": "^3.0.1"
   },
   "scripts": {
-    "test": "npx ts-node search.ts"
+    "start": "npx ts-node search.ts"
   },
   "author": "",
   "license": "ISC"

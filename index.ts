@@ -45,6 +45,7 @@ export default async function (query, openAiKey, supabaseUrl, supabaseServiceKey
   if (embeddingResponse.status !== 200) {
     throw new ApplicationError('Failed to create embedding for question', embeddingResponse)
   }
+  console.log(`提问： ${query}`)
   console.log('embedding ...')
   const {
     data: [{ embedding }],
@@ -120,7 +121,8 @@ export default async function (query, openAiKey, supabaseUrl, supabaseServiceKey
     },
     body: JSON.stringify(completionOptions),
   })
-  console.log('回复为：', response)
+
+  console.log('chatgpt 回复为：', response)
 
   if (!response.ok) {
     const error = await response.json()
