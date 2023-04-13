@@ -9,5 +9,11 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
 
 
-await search('请问如何使用F2绘制柱状图？', openAiKey, supabaseUrl, supabaseServiceKey )
- 
+const query = (question) => {
+  search(question, openAiKey, supabaseUrl, supabaseServiceKey )
+}
+
+
+
+// 在这里提问
+query('请问如何使用F2绘制柱状图？')

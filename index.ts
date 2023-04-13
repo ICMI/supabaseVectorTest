@@ -50,7 +50,7 @@ export default async function (query, openAiKey, supabaseUrl, supabaseServiceKey
     data: [{ embedding }],
   } = await embeddingResponse.json()
 
-  console.log('embedding 完成, 开始匹配文本...')
+  console.log('embedding 完成, 开始搜索数据库...')
   const { error: matchError, data: pageSections } = await supabaseClient.rpc(
     'match_page_sections',
     {
@@ -64,7 +64,7 @@ export default async function (query, openAiKey, supabaseUrl, supabaseServiceKey
   if (matchError) {
     throw new ApplicationError('Failed to match page sections', matchError)
   }
-  console.log('匹配完成, 开始请求chatgpt...')
+  console.log('搜索完成, 开始请求chatgpt...')
 
   // @ts-ignore 
   const tokenizer = new GPT3Tokenizer({ type: 'gpt3' })
